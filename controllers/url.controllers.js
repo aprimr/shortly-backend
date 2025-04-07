@@ -54,7 +54,7 @@ const shortUrl = async (req, res) => {
 };
 
 const getUrls = async (req, res) => {
-  const username = req.headers.username;
+  const { username } = req.query;
   try {
     //Check for usernaem
     if (!username) {
@@ -63,7 +63,9 @@ const getUrls = async (req, res) => {
 
     const user = await Users.findOne({ username });
     if (!user) {
-      return res.status(300).json({ message: "Security token error" });
+      return res
+        .status(400)
+        .json({ message: "Security token error: User not found" });
     }
 
     //get urls
