@@ -1,3 +1,8 @@
+import dotenv from "dotenv";
+dotenv.config();
+
+const FRONTEND_BASE_URL = process.env.FRONTEND_URL;
+
 const verificationMailTemplate = (fullname, verificationCode) => {
   return `
     <html>
@@ -111,7 +116,7 @@ const verificationMailTemplate = (fullname, verificationCode) => {
             <p class="code" id="verification-code">${verificationCode}</p>
           </div>
           <p class="medium-text">This code expires in 15 minutes. If you do not use it within this timeframe, you will need to request a new one.</p>
-          <p class="small-text">If you have any concerns, feel free to <a href='https://www.shortly5.com/contact' class="link">contact support</a>.</p>
+          <p class="small-text">If you have any concerns, feel free to <a href='${FRONTEND_BASE_URL}/contact' class="link">contact support</a>.</p>
           <p class="small-text">This email was sent by Shortly. If you did not request this, please ignore it.</p>
         </div>
       </div>
@@ -232,7 +237,7 @@ const newLoginMailTemplate = (fullname, reqDetails) => {
 
           <p>If this was you, there's no need to take any further action. <br><br> If you did not make this request, please secure your account immediately.</p>
 
-          <p class="small-text">If you have any concerns, feel free to <a href="https://www.shortly5.com/contact" class="link">contact support</a>.</p>
+          <p class="small-text">If you have any concerns, feel free to <a href="${FRONTEND_BASE_URL}/contact" class="link">contact support</a>.</p>
           <p class="small-text">This email was sent by Shortly. If you did not request this, please ignore it.</p>
         </div>
       </div>
@@ -354,7 +359,7 @@ const passwordResetMailTemplate = (fullname, verificationCode) => {
             <p class="code" id="verification-code">${verificationCode}</p>
           </div>
           <p class="medium-text">This code expires in 15 minutes. If you do not use it within this timeframe, you will need to request a new one.</p>
-          <p class="small-text">If you have any concerns, feel free to <a href='https://www.shortly5.com/contact' class="link">contact support</a>.</p>
+          <p class="small-text">If you have any concerns, feel free to <a href='${FRONTEND_BASE_URL}/contact' class="link">contact support</a>.</p>
           <p class="small-text">This email was sent by Shortly. If you did not request this, please ignore it.</p>
         </div>
       </div>
@@ -436,7 +441,7 @@ const passwordChangedMessageTemplate = (fullname) => {
           <p>Hello <strong>${fullname}</strong>,</p>
           <p>Your password has been successfully reset. You can now log in to your Shortly account using your new password.</p>
           <p>If you did not request this change, please reset your password immediately and contact our support team.</p>
-          <p class="small-text">If you have any questions or concerns, feel free to <a href='https://www.shortly5.com/contact' class="link">contact support</a>.</p>
+          <p class="small-text">If you have any questions or concerns, feel free to <a href='${FRONTEND_BASE_URL}/contact' class="link">contact support</a>.</p>
           <p class="small-text">This email was sent by Shortly. If you did not request a password reset, please ignore this email.</p>
         </div>
       </div>
@@ -537,7 +542,7 @@ const accountVerifiedMessageTemplate = (fullname) => {
           <p>Thank you for signing up on Shortly! Your account has been successfully created.</p>
           <p>Get started by logging in and exploring all the features Shortly has to offer.</p>
           <div class="button-container">
-            <a href="https://www.shortly5.com/home" class="button">Go to Dashboard</a>
+            <a href="${FRONTEND_BASE_URL}/home" class="button">Go to Dashboard</a>
           </div>
           <p class="small-text">If you have any questions or need assistance, feel free to <a href='#' class="link">contact support</a>.</p>
           <p class="small-text">Welcome aboard, and happy shortening!</p>
